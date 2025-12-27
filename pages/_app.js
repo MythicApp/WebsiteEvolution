@@ -11,8 +11,8 @@ function App({ Component, pageProps, router }) {
   const pageData = config.pages[pathname] ?? config.pages['/'];
   const isDefault = defaultPageData === pageData;
   const title = isDefault
-    ? `CodeEdit | A native code editor for macOS`
-    : `${pageData.title} | CodeEdit`;
+    ? `${config.title} | The best way to play Windows® games on Mac.`
+    : `${pageData.title} | ${config.title}`;
   const { description } = pageData;
   const { host } = config;
 
@@ -26,16 +26,9 @@ function App({ Component, pageProps, router }) {
         />
         <meta name="description" content={description} />
         <meta property="og:url" content={`${host}${asPath}`} />
-        {pathname !== '/blog/[...slug]' && (
-          <>
-            <meta property="og:title" content={title} />
-            <meta property="og:description" content={description} />
-            <meta property="og:image" content={`${host}/social-preview.jpg`} />
-          </>
-        )}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@CodeEdit" />
-        <meta name="twitter:creator" content="@CodeEdit" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`${host}/social-preview.jpg`} />
       </Head>
       <Layout pathname={pathname}>
         <Component {...pageProps} />

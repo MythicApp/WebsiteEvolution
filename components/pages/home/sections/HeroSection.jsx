@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
 import Typography from '@/components/common/Typography';
+import HighlightedText from '@/components/common/HighlightedText';
 import { Row, Column, Section, Stack } from '@/components/common/layout';
 import Button from '@/components/common/Button';
 import HeroImage from '../HeroImage';
@@ -31,18 +32,18 @@ const HeroSection = ({ versionNumber, minimumSystemVersion }) => {
                       width={128}
                       height={128}
                       src="/product-icon.png"
-                      alt="CodeEdit product icon"
+                      alt="Mythic product icon"
                     />
                   </ProductIconWrap>
                   <Typography variant="headline-elevated">
-                    A lightweight, natively-built editor.
-                    Open source. Free forever.
+                    The <HighlightedText>best</HighlightedText> way to play Windows® games on Mac.
                   </Typography>
                   <Typography variant="intro-elevated" color="tertiary" gutterBottom>
-                    CodeEdit is an exciting new code editor written entirely and unapologetically for macOS. Develop any project using any language at speeds like never before with increased efficiency and reliability in an editor that feels right at home on your Mac.
+                    An open-source macOS game launcher with the ability to play Windows® games through a custom implementation of Apple's Game Porting Toolkit, with support for multiple storefronts.
                   </Typography>
                   <Button size="lg" onClick={() => router.push("/download")}>Download</Button>
                   <Typography variant="body-reduced" color="tertiary">{ versionNumber } | macOS {minimumSystemVersion ? `${minimumSystemVersion.split(".")[0]}+` : ``}</Typography>
+                  <Typography variant="body-reduced" color="tertiary">This is an alpha release.</Typography>
                 </Stack>
               </Column>
             </Row>

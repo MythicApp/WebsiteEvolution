@@ -1,21 +1,21 @@
-import { fetchWithCache } from '@/utils/fetchData';
-
+import { APPCAST_URL, parseAppcast } from '@/utils/appcast';
 export { default } from '@/components/pages/download';
 
 export async function getStaticProps() {
-  const data = await fetchWithCache(
-    'latestRelease',
-    'https://api.github.com/repos/CodeEditApp/CodeEdit/releases/latest'
-  );
-  const appAsset = data.assets?.filter((asset) =>
-    /^CodeEdit.*\.dmg$/.test(asset.name)
-  )?.[0];
+  let latest = null;
+  try {
+    const res = await fetch(APPCAST_URL);
+    const text = res.ok ? await res.text() : null;
+    latest = parseAppcast(text);
+  } catch (err) {
+    // swallow to allow page render with manual link fallback
+  }
 
   return {
     props: {
-      versionNumber: data.tag_name,
-      downloadUrl: appAsset.browser_download_url,
+      versionNumber: latest?.versionNumber ?? null,
+      downloadUrl: latest?.enclosure ?? null,
     },
-    revalidate: 60 * 60 * 24, // 24 hours
+    revalidate: 60 * 30, // 30 minutes
   };
 }

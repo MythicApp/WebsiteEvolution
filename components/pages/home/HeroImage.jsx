@@ -38,7 +38,7 @@ const SceneWrap = styled.div`
   animation: ${scaleBlurIn} 500ms 750ms cubic-bezier(0.0, 0.0, 0.2, 1);
   animation-fill-mode: both;
   transform-origin: bottom center;
-  margin-top: 6%;
+  margin-top: 3%;
   img {
     position: relative;
     width: 100%;
@@ -54,16 +54,7 @@ const ImageWrap = styled.div`
     width: 82%;
   }
 `;
-const BlurBackground = styled.div`
-  backdrop-filter: blur(15px);
-  position: absolute;
-  top: 2.5%;
-  right: 3%;
-  bottom: 8%;
-  left: 3%;
-  border-radius: 1%;
 
-`;
 const colorFlairPiece = css`
   position: absolute;
   top: 0;
@@ -78,7 +69,7 @@ const colorFlairPiece = css`
   }
 
   border-radius: 50%;
-  background: #4F95FF;
+  background: #7541FF;
   transform-origin: bottom center;
 `;
 const ColorFlair = styled.div`
@@ -89,7 +80,7 @@ const ColorFlair = styled.div`
     content: "";
     display: block;
     ${colorFlairPiece};
-    background: #B120BD;
+    background: #5412FF;
     top: 50%;
     left: auto;
     right: 50%;
@@ -98,7 +89,7 @@ const ColorFlair = styled.div`
     content: "";
     display: block;
     ${colorFlairPiece};
-    background: #44CEE3;
+    background: var(--label-tertiary-color);
     top: 50%;
     left: 50%;
   },
@@ -140,19 +131,21 @@ const StyledHardwareLockup = styled(HardwareLockup)`
 const HeroImage = ({ percentage }) => {
   const { colorScheme = "light", breakpoint } = useSite();
   const adjustedPercentage = (Math.min(Math.max(percentage - ( breakpoint === 'xs' ? .2 : 0), 1), 1.2) - 1) * 5;
+  
+  const imageScale = Math.max(0.7, 1.2 - adjustedPercentage * 0.7);
+  const imageTranslateY = adjustedPercentage * 6;
 
   return (
     <SceneWrap>
       <ColorFlair1 />
       <ColorFlair2 />
       <ColorFlair3 />
-      <ImageWrap style={{ transform: `translateY(${adjustedPercentage * 12.5}%) scale(${1 + (1 - adjustedPercentage) * .1})` }}>
-        <BlurBackground />
+      <ImageWrap style={{ transform: `translateY(${imageTranslateY}%) scale(${imageScale})` }}>
         <Image
-          width={987.275}
-          height={580.75}
-          src={`/codeedit-window-${colorScheme}.png`}
-          alt="CodeEdit screenshot"
+          width={721.5}
+          height={423}
+          src={`/mythic-window-${colorScheme}.png`}
+          alt="Mythic screenshot"
         /> 
       </ImageWrap>
       <StyledHardwareLockup style={{ opacity: adjustedPercentage, transform: `translateY(-${adjustedPercentage * 15}%)  scale(${1 + (1 - adjustedPercentage) * -.1})` }} />

@@ -1,18 +1,28 @@
-import { fetchWithCache } from '@/utils/fetchData';
 import getMinimumSystemVersion from '@/utils/getMinimumSystemVersion';
+import { APPCAST_URL, parseAppcast } from '@/utils/appcast';
 
 export { default } from '@/components/pages/home';
 
 export async function getStaticProps() {
-  const data = await fetchWithCache(
-    'latestRelease',
-    'https://api.github.com/repos/CodeEditApp/CodeEdit/releases/latest'
-  );
+  let latest = null;
+  try {
+    const res = await fetch(APPCAST_URL);
+    const text = res.ok ? await res.text() : null;
+    latest = parseAppcast(text);
+  } catch (err) {
+    // allow page to render without version metadata if fetch fails
+  }
+
+  const build = latest?.versionTagRaw ?? latest?.versionNumber ?? null;
+  const shortVersion = latest?.shortVersion ?? latest?.title ?? null;
+  const versionLabel = shortVersion && build
+    ? `${shortVersion} (${build})`
+    : shortVersion ?? (build ? String(build) : null);
 
   return {
     props: {
-      versionNumber: data.tag_name,
-      minimumSystemVersion: getMinimumSystemVersion(data.body),
+      versionNumber: versionLabel,
+      minimumSystemVersion: latest?.minimumSystemVersion ?? getMinimumSystemVersion(latest?.title ?? ''),
     },
     revalidate: 60 * 60 * 24, // 24 hours
   };

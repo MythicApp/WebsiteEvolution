@@ -37,7 +37,7 @@ async function generate() {
             const route = path === '/index' ? '' : path;
             return `
               <url>
-                  <loc>${`https://codeedit.app${route}`}</loc>
+                  <loc>${`https://getmythic.app${route}`}</loc>
               </url>
             `;
           })

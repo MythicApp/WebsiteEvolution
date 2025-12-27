@@ -34,7 +34,7 @@ const WhyUsSection = () => {
               Designed to help your&nbsp;work&nbsp;flow.
             </Typography>
             <Typography variant="intro-elevated" gutterTop>
-              The world’s fastest editor has a completely reimagined design, making CodeEdit more immersive and customizable than ever. And with a streamlined user interface, you’ve got new tools for keeping track of what’s important — and for clearing some headspace when you need it most.
+              Mythic is packed with features to simplify your gaming experience.
             </Typography>
           </SectionHeader>
         </Column>

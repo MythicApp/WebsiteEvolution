@@ -7,9 +7,9 @@ const WhyUsSection = () => {
   return (
     <Section contained gutterBottom>
       <Stack style={{ textAlign: 'center', marginBottom: 48 }}>
-        <Typography variant="headline-reduced">Why CodeEdit?</Typography>
+        <Typography variant="headline-reduced">Why Mythic?</Typography>
         <Typography variant="intro" gutterTop>
-          This is a description of the why CodeEdit section.
+          This is a description of the why Mythic section.
         </Typography>
       </Stack>
       <Grid columns={{ xs: 1, md: 2, lg: 3 }} gap>

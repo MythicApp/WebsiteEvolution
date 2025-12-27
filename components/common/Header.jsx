@@ -15,30 +15,48 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  height: 52px;
   z-index: 9997;
   position: sticky;
+  pointer-events: none;
+  transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   * {
     box-sizing: content-box;
   }
   @media ${mediaQueries.sm} {
+    margin-top: 12px;
     height: 48px;
   }
 `;
 const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  pointer-events: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  height: auto;
-  min-height: 100%;
-  z-index: 1;
-  transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  max-width: 100%;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px var(--localnav-outline);
   background-color: var(--material-background-color);
   backdrop-filter: var(--material-filters);
-  box-shadow: 0 1px 0 0 var(--material-separator-color);
+  transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1), max-width 0.5s cubic-bezier(0.28, 0.11, 0.32, 1), border-radius 0.5s cubic-bezier(0.28, 0.11, 0.32, 1), box-shadow 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   .menu-open & {
     background-color: var(--thick-material-background-color);
+  }
+  &.island {
+    max-width: 980px;
+    border-radius: 16px;
+  }
+  @media ${mediaQueries.md} {
+    &.island {
+      max-width: 692px;
+      border-radius: 18px;
+    }
+  }
+  @media ${mediaQueries.sm} {
+    &.island {
+      max-width: 366px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
   }
 `;
 const HeaderContainer = styled(Container)`
@@ -350,6 +368,7 @@ const MenuChevron = styled.span`
 function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState();
+  const [isIsland, setIsIsland] = useState(false);
   const menuRef = useRef();
 
   useEffect(() => {
@@ -359,13 +378,18 @@ function Header() {
       }
     };
     const handleScroll = () => {
-      setIsOpen(val => val ? false : val)
-    }
+      setIsOpen(val => val ? false : val);
+      // Become 'island' after scrolling 8px or more
+      setIsIsland(window.scrollY > 8);
+    };
 
-    const throttledHandleScroll = throttle(handleScroll, 1000);
+    const throttledHandleScroll = throttle(handleScroll, 100);
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('scroll', throttledHandleScroll);
+
+    // Set initial state on mount
+    setIsIsland(window.scrollY > 8);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -375,17 +399,16 @@ function Header() {
 
   return (
     <Nav role="navigation" className={isOpen ? "menu-open" : ""} ref={menuRef}>
-      <Wrapper>
+      <Wrapper className={isIsland ? 'island' : ''}>
         <HeaderContainer>
           <Link href="/">
             <Title>
               <Image
-                width={32}
-                height={32}
-                src="/product-icon.png"
-                alt="CodeEdit product icon"
+                width={96}
+                height={36}
+                src="/wordmark.png"
+                alt={`${config.title} product icon`}
               />
-              <span>{config.title}</span>
           </Title>
           </Link>
           <Menu>
@@ -413,7 +436,14 @@ function Header() {
                 </MenuToggle>
               </Action>
               <Action>
-                <Button size="sm" onClick={() => router.push("/download")}>Download</Button>
+                <Button
+                  size="sm"
+                  href={`${config.links.githubRepo}/releases/latest`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Download Alpha
+                </Button>
               </Action>
             </Actions>
           </Menu>

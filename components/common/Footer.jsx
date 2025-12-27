@@ -106,13 +106,13 @@ function Footer() {
         <SocialSection />
         <FooterMini>
           <MiniFooterTop>
-            <div>To view the latest CodeEdit developments, visit <a href={config.links.githubProject}>our roadmap</a>.</div>
+            <div>Please note that Mythic is still in its alpha stage of development; expect bugs.</div>
             <ColorSchemeToggle />
           </MiniFooterTop>
           <MiniFooterBottom>
             <LegalCopyright>
               Copyright &copy; {currentYear}{' '}
-              <a href={config.host}>CodeEdit</a>. All rights reserved.
+              <a href={config.host}>vapidinfinity</a>. All rights reserved.
             </LegalCopyright>
             <LegalLinks>
               {/* <LegalLink href="/legal/tos">

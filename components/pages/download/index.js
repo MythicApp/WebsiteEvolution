@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Column, Row, Section, Stack } from '@/components/common/layout';
 import Typography from '@/components/common/Typography';
 import Image from 'next/image';
 import Tile from '@/components/common/Tile';
 import { mediaQueries } from '@/styles/breakpoints';
+import config from '@/data/config';
 
 const StepTile = styled(Tile)`
   overflow: hidden;
@@ -54,10 +55,67 @@ const Download = styled.iframe`
   opacity: 0;
 `;
 
+const APPCAST_URL = 'https://getmythic.app/appcast.xml';
+
+function parseAppcast(text) {
+  if (typeof text !== 'string' || !text) return null;
+
+  const itemMatches = Array.from(text.matchAll(/<item[\s\S]*?<\/item>/g));
+  const releases = itemMatches
+    .map((m) => m[0])
+    .map((snippet) => {
+      const title = (snippet.match(/<title>([^<]+)<\/title>/) || [])[1] ?? null;
+      const versionTag =
+        (snippet.match(/<sparkle:version>([^<]+)<\/sparkle:version>/) || [])[1] ??
+        (snippet.match(/sparkle:version="([^"]+)"/) || [])[1] ?? null;
+      const enclosure = (snippet.match(/<enclosure[^>]*url="([^"]+)"/) || [])[1] ?? null;
+
+      return {
+        title,
+        versionNumber: versionTag ? parseInt(versionTag, 10) : null,
+        enclosure,
+      };
+    })
+    .filter((r) => r.title && r.versionNumber && r.enclosure)
+    .sort((a, b) => b.versionNumber - a.versionNumber);
+
+  return releases[0] ?? null;
+}
+
 export default function DownloadPage({ downloadUrl }) {
+  useEffect(() => {
+    if (downloadUrl) {
+      return;
+    }
+
+    let cancelled = false;
+
+    const start = async () => {
+      try {
+        const res = await fetch(APPCAST_URL);
+        const text = res.ok ? await res.text() : null;
+        if (cancelled) return;
+        const latest = parseAppcast(text);
+        if (latest?.enclosure) {
+          window.location.href = latest.enclosure;
+        }
+      } catch (err) {
+        // silent fallback; manual link remains visible
+      }
+    };
+
+    // mimic old 3-second countdown without UI change
+    const timer = setTimeout(start, 3000);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [downloadUrl]);
+
   return (
     <>
-      <Download src={downloadUrl} />
+      {downloadUrl && <Download src={downloadUrl} />}
       <Section contained gutterTop>
         <Row align="center" style={{ position: 'relative', zIndex: 1 }}>
           <Column width={{ md: 12, lg: 12 }}>
@@ -67,11 +125,11 @@ export default function DownloadPage({ downloadUrl }) {
                   width={128}
                   height={128}
                   src="/product-icon.png"
-                  alt="CodeEdit product icon"
+                  alt="Mythic product icon"
                 />
               </ProductIconWrap>
               <Typography variant="headline-elevated">
-                Thanks for downloading CodeEdit!
+                Thanks for downloading Mythic!
               </Typography>
               <Typography
                 variant="intro-elevated"
@@ -90,73 +148,6 @@ export default function DownloadPage({ downloadUrl }) {
                 .
               </Typography>
             </Stack>
-          </Column>
-        </Row>
-      </Section>
-      <Section contained gutterY>
-        <Row gap>
-          <Column width={{ md: 12, lg: 4 }}>
-            <StepTile>
-              <Stack gap>
-                <StepNumber>1</StepNumber>
-                <Typography variant="eyebrow">
-                  Open CodeEdit disk image in Downloads
-                </Typography>
-                <Image
-                  width={200}
-                  height={200}
-                  src="/downloads-folder.png"
-                  alt="Downloads folder"
-                  style={{
-                    position: 'absolute',
-                    left: '50%',
-                    bottom: -50,
-                  }}
-                />
-              </Stack>
-            </StepTile>
-          </Column>
-          <Column width={{ md: 12, lg: 4 }}>
-            <StepTile gap>
-              <Stack gap>
-                <StepNumber>2</StepNumber>
-                <Typography variant="eyebrow">
-                  Drag the CodeEdit icon to Applications
-                </Typography>
-                <Image
-                  width={256}
-                  height={149}
-                  src="/drag-to-applications-folder.png"
-                  alt="Downloads folder"
-                  style={{
-                    position: 'absolute',
-                    left: '50%',
-                    bottom: 0,
-                  }}
-                />
-              </Stack>
-            </StepTile>
-          </Column>
-          <Column width={{ md: 12, lg: 4 }}>
-            <StepTile>
-              <Stack gap>
-                <StepNumber>3</StepNumber>
-                <Typography variant="eyebrow">
-                  Add to dock, click to launch!
-                </Typography>
-                <Image
-                  width={400}
-                  height={120}
-                  src="/drag-to-dock.png"
-                  alt="Downloads folder"
-                  style={{
-                    position: 'absolute',
-                    left: '50%',
-                    bottom: 0,
-                  }}
-                />
-              </Stack>
-            </StepTile>
           </Column>
         </Row>
       </Section>

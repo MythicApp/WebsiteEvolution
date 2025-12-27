@@ -1,11 +1,11 @@
-export { default } from '@/components/pages/whats-new/RawRelease'
+export { default } from '@/components/pages/releases/RawRelease'
 import { fetchWithCache } from '@/utils/fetchData';
 
 export async function getStaticProps({ params }) {
   const { tag } = params;
   const data = await fetchWithCache(
     'releases',
-    'https://api.github.com/repos/CodeEditApp/CodeEdit/releases'
+    'https://api.github.com/repos/MythicApp/Mythic/releases'
   );
 
   return {
@@ -18,7 +18,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const data = await fetchWithCache(
     'releases',
-    'https://api.github.com/repos/CodeEditApp/CodeEdit/releases'
+    'https://api.github.com/repos/MythicApp/Mythic/releases'
   );
   const paths = data.map((release) => ({ params: { tag: release.tag_name } }));
 
