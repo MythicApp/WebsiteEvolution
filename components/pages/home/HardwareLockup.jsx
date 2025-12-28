@@ -6,9 +6,10 @@ const HardwareLockupWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  width: 100%;
+  margin: 0 auto;
   position: relative;
   aspect-ratio: 1204/736;
-  width: auto;
   @supports ((-webkit-mask-image:url("")) or (mask-image:url(""))) {
     mask-size: contain;
     /* mask-position: center; */

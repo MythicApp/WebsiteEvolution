@@ -58,7 +58,7 @@ const Wrapper = styled.div`
     background-color: var(--thick-material-background-color);
   }
   &.island {
-    max-width: 980px;
+    max-width: 1024px;
     border-radius: 16px;
   }
   @media ${mediaQueries.md} {

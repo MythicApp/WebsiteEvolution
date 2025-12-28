@@ -49,7 +49,7 @@ const ImageWrap = styled.div`
   position: relative;
   max-width: 988px;
   margin: 0 auto;
-  z-index: 1;
+  z-index: 2;
   @media ${mediaQueries.md} {
     width: 82%;
   }
@@ -119,14 +119,12 @@ const ColorFlair3 = styled(ColorFlair)`
 `;
 const StyledHardwareLockup = styled(HardwareLockup)`
   margin-top: -45%;
-  margin-left: -112px;
-  margin-right: -112px;
+  position: relative;
+  z-index: 1;
   @media ${mediaQueries.md} {
     margin-top: -37%;
-    margin-left: 0;
-    margin-right: 0;
   }
-`
+`;
 
 const HeroImage = ({ percentage }) => {
   const { colorScheme = "light", breakpoint } = useSite();
