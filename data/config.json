@@ -19,6 +19,10 @@
     "https://github.com/MythicApp/Mythic": {
       "title": "GitHub",
       "description": "Mythic GitHub repository"
+    },
+    "https://github.com/sponsors/MythicApp": {
+      "title": "Sponsor",
+      "description": "Mythic GitHub Sponsors page"
     }
   },
   "links": {
@@ -32,6 +36,7 @@
   "navigation": [
     "/",
     "/releases",
-    "https://github.com/MythicApp/Mythic"
+    "https://github.com/MythicApp/Mythic",
+    "https://github.com/sponsors/MythicApp"
   ]
 }
