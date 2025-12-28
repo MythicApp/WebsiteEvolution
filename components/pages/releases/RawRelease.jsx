@@ -34,9 +34,12 @@ const StyledMarkdown = styled(Markdown)`
   }
 `;
 
-const RawRelease = ({ release }) => {
+
+const RawRelease = ({ release, fetchError }) => {
+  if (fetchError) {
+    return <div>Failed to fetch release data. You may have hit the GitHub API rate limit. Try again later.</div>;
+  }
   if (!release) return <div>No Release Found</div>;
-  
   return (
     <>
       <Head>
