@@ -70,8 +70,8 @@ export const TileViolator = styled.div`
   white-space: nowrap;
   display: inline-block;
   background: transparent;
-  border: 1px solid #bf4800;
-  color: #bf4800;
+  border: 1px solid #652AFF;
+  color: #652AFF;
   font-size: 17px;
   line-height: 1.1764805882;
   font-weight: 400;
