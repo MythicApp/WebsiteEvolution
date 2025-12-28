@@ -1,3 +1,13 @@
+/* Feature image hover scale effect */
+.feature-image-hover {
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), filter 0.25s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform, filter;
+}
+.feature-image-hover:hover {
+  transform: scale(1.045);
+  filter: drop-shadow(0 0 0.5em #652AFF);
+  z-index: 1;
+}
 /* Local nav outline variable for color scheme awareness */
 :root {
   --localnav-outline: #e6e6e8;

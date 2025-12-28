@@ -4,6 +4,7 @@ import Typography from '@/components/common/Typography';
 import { Grid, GridItem, Section, Stack } from '@/components/common/layout';
 import HighlightedText from '@/components/common/HighlightedText';
 import Image from "next/image";
+import React from "react";
 import { useSite } from '@/components/common/Site';
 
 const FeaturesSection = () => {
@@ -30,6 +31,7 @@ const FeaturesSection = () => {
               </Typography>
             </Stack>
             <Image
+              className="feature-image-hover"
               width={481}
               height={282}
               src={`/mythic-library-grid-${colorScheme}.png`}
@@ -46,6 +48,7 @@ const FeaturesSection = () => {
               Mythic will automatically organise, and prepare them for launching — no assembly required.
             </Typography>
             <Image
+              className="feature-image-hover"
               width={481}
               height={282}
               src={`/mythic-epicgameimportview-${colorScheme}.png`}
@@ -84,6 +87,7 @@ const FeaturesSection = () => {
               The intuitive game settings view lets you tweak launch arguments, verify file integrity, and more with just a few clicks.
             </Typography>
             <Image
+              className="feature-image-hover"
               width={481}
               height={282}
               src={`/mythic-gamesettingsview-${colorScheme}.png`}
@@ -99,6 +103,7 @@ const FeaturesSection = () => {
               Download, update, and install games from multiple storefronts with ease.
             </Typography>
             <Image
+              className="feature-image-hover"
               width={481}
               height={282}
               src={`/mythic-operations-demo-${colorScheme}.png`}
@@ -114,6 +119,7 @@ const FeaturesSection = () => {
               Create multiple containers of Windows® directly within Mythic, and choose to keep some games isolated from others.
             </Typography>
             <Image
+              className="feature-image-hover"
               width={481}
               height={282}
               src={`/mythic-containerconfirgurationview-${colorScheme}.png`}
@@ -129,6 +135,7 @@ const FeaturesSection = () => {
               Mythic&apos;s onboarding experience guides your through setting up the application, swiftly.
             </Typography>
             <Image
+              className="feature-image-hover"
               width={481}
               height={282}
               src={`/mythic-onboarding-engineinstall-${colorScheme}.png`}
