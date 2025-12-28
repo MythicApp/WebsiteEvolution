@@ -23,7 +23,6 @@ const Nav = styled.nav`
     box-sizing: content-box;
   }
   @media ${mediaQueries.sm} {
-    margin-top: 12px;
     height: 48px;
   }
 `;
