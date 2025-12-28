@@ -34,7 +34,7 @@ const FeaturesSection = () => {
               height={282}
               src={`/mythic-library-grid-${colorScheme}.png`}
               alt="Mythic screenshot"
-              style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+              style={{ height: 'auto', objectFit: 'contain' }}
             />
           </Stack>
         </GridItem>
