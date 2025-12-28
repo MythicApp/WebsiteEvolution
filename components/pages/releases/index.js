@@ -67,7 +67,7 @@ export default function ReleasesPage({ releases, appcastDownloadMap = {} }) {
         ))
       ) : (
         <Section contained gutterY={8}>
-          <Typography variant="body-elevated" color="tertiary" align="center">
+          <Typography variant="body-elevated" color="tertiary" style={{ textAlign: 'center' }}>
             Releases currently unavailable, please try again later.
           </Typography>
         </Section>
