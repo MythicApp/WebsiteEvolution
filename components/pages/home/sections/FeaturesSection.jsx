@@ -63,7 +63,7 @@ const FeaturesSection = () => {
             <Stack direction='vertical' gap={2}>
               <Typography variant="eyebrow" style={{color: 'white'}}>What&apos;re you still waiting for?</Typography>
               <Typography variant="body" style={{color: 'white'}}>
-                <a href="" style={{color: 'var(--glyph-gray)'}}>Download Mythic</a> today, and join the revolution in gaming on macOS.
+                <a href="/download" style={{color: 'var(--glyph-gray)'}}>Download Mythic</a> today, and join the revolution in gaming on macOS.
               </Typography>
             </Stack>
             {/*
