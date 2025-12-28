@@ -16,19 +16,31 @@ const Nav = styled.nav`
   left: 0;
   width: 100%;
   z-index: 9997;
-  position: sticky;
   pointer-events: none;
   transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1), padding-top 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   padding-top: 0;
-  &.island {
-    padding-top: 12px;
-  }
   * {
     box-sizing: content-box;
   }
   @media ${mediaQueries.sm} {
     margin-top: 12px;
     height: 48px;
+  }
+`;
+
+const IslandNav = styled.nav`
+  position: sticky;
+  top: 16px;
+  left: 0;
+  width: 100%;
+  z-index: 9998;
+  pointer-events: none;
+  background: none;
+  transition: opacity 0.4s cubic-bezier(0.28, 0.11, 0.32, 1);
+  opacity: 1;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 `;
 const Wrapper = styled.div`
@@ -369,90 +381,160 @@ const MenuChevron = styled.span`
   }
 `;
 
+
 function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState();
-  const [isIsland, setIsIsland] = useState(false);
-  const menuRef = useRef();
+  const [showIsland, setShowIsland] = useState(false);
+  const navRef = useRef();
+  const islandRef = useRef();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef?.current && !menuRef.current.contains(event.target)) {
+      if (navRef?.current && !navRef.current.contains(event.target) && islandRef?.current && !islandRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
     const handleScroll = () => {
       setIsOpen(val => val ? false : val);
-      // Become 'island' after scrolling 8px or more
-      setIsIsland(window.scrollY > 8);
+      if (navRef.current) {
+        const navBottom = navRef.current.getBoundingClientRect().bottom;
+        // Increase the offset before the island appears (e.g., 48px)
+        setShowIsland(navBottom <= -128);
+      }
     };
-
     const throttledHandleScroll = throttle(handleScroll, 100);
-
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('scroll', throttledHandleScroll);
-
     // Set initial state on mount
-    setIsIsland(window.scrollY > 8);
-
+    if (navRef.current) {
+      const navBottom = navRef.current.getBoundingClientRect().bottom;
+      setShowIsland(navBottom <= -128);
+    }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('scroll', throttledHandleScroll);
     }
-  }, [menuRef]);
+  }, []);
+
+  // Main nav (not sticky)
+  const navContent = (
+    <Wrapper>
+      <HeaderContainer>
+        <Link href="/">
+          <Title>
+            <Image
+              width={32}
+              height={32}
+              src="/product-icon.png"
+              alt={`${config.title} product icon`}
+            />
+            Mythic
+          </Title>
+        </Link>
+        <Menu>
+          <MenuTray>
+            <MenuItems>
+              {config.navigation.map(href => {
+                const isExternal = href.match(/(https?:\/\/[\w\d.-]+)/gi);
+                const item = config.pages[href];
+                return (
+                  <MenuItem key={href} {...(isExternal ? { target: "_blank" } : {})}>
+                    <MenuLink onClick={() => setIsOpen(false)} href={href} $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}>
+                      {item.title}
+                      {isExternal && <StyledExternalLink size={11} />}
+                    </MenuLink>
+                  </MenuItem>
+                );
+              })}
+            </MenuItems>
+          </MenuTray>
+          <Actions>
+            <Action>
+              <MenuToggle onClick={() => setIsOpen(val => !val)}>
+                <MenuChevron className="codeeditnav-menucta-chevron"></MenuChevron>
+              </MenuToggle>
+            </Action>
+            <Action>
+              <Button
+                size="sm"
+                href={`/download`}
+              >
+                Download Alpha
+              </Button>
+            </Action>
+          </Actions>
+        </Menu>
+      </HeaderContainer>
+    </Wrapper>
+  );
+
+  // Island nav (sticky, only after main nav is scrolled past)
+  const islandContent = (
+    <Wrapper className="island">
+      <HeaderContainer>
+        <Link href="/">
+          <Title>
+            <Image
+              width={32}
+              height={32}
+              src="/product-icon.png"
+              alt={`${config.title} product icon`}
+            />
+            Mythic
+          </Title>
+        </Link>
+        <Menu>
+          <MenuTray>
+            <MenuItems>
+              {config.navigation.map(href => {
+                const isExternal = href.match(/(https?:\/\/[\w\d.-]+)/gi);
+                const item = config.pages[href];
+                return (
+                  <MenuItem key={href} {...(isExternal ? { target: "_blank" } : {})}>
+                    <MenuLink onClick={() => setIsOpen(false)} href={href} $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}>
+                      {item.title}
+                      {isExternal && <StyledExternalLink size={11} />}
+                    </MenuLink>
+                  </MenuItem>
+                );
+              })}
+            </MenuItems>
+          </MenuTray>
+          <Actions>
+            <Action>
+              <MenuToggle onClick={() => setIsOpen(val => !val)}>
+                <MenuChevron className="codeeditnav-menucta-chevron"></MenuChevron>
+              </MenuToggle>
+            </Action>
+            <Action>
+              <Button
+                size="sm"
+                href={`/download`}
+              >
+                Download Alpha
+              </Button>
+            </Action>
+          </Actions>
+        </Menu>
+      </HeaderContainer>
+    </Wrapper>
+  );
 
   return (
-    <Nav role="navigation" className={`${isOpen ? "menu-open" : ""} ${isIsland ? "island" : ""}`} ref={menuRef}>
-      <Wrapper className={isIsland ? 'island' : ''}>
-        <HeaderContainer>
-          <Link href="/">
-            <Title>
-              <Image
-                width={32}
-                height={32}
-                src="/product-icon.png"
-                alt={`${config.title} product icon`}
-              />
-              Mythic
-          </Title>
-          </Link>
-          <Menu>
-            <MenuTray>
-              <MenuItems>
-                {config.navigation.map(href => {
-                  const isExternal = href.match(/(https?:\/\/[\w\d.-]+)/gi);
-                  const item = config.pages[href];
-
-                  return (
-                    <MenuItem key={href} {...(isExternal ? { target: "_blank" } : {})}>
-                      <MenuLink onClick={() => setIsOpen(false)} href={href} $current={router.asPath === href || (href !== "/" && router.asPath.startsWith(href))}>
-                        {item.title}
-                        {isExternal && <StyledExternalLink size={11} />}
-                      </MenuLink>
-                    </MenuItem>
-                  );
-                })}
-              </MenuItems>
-            </MenuTray>
-            <Actions>
-              <Action>
-                <MenuToggle onClick={() => setIsOpen(val => !val)}>
-                  <MenuChevron className="codeeditnav-menucta-chevron"></MenuChevron>
-                </MenuToggle>
-              </Action>
-              <Action>
-                <Button
-                  size="sm"
-                  href={`/download`}
-                >
-                  Download Alpha
-                </Button>
-              </Action>
-            </Actions>
-          </Menu>
-        </HeaderContainer>
-      </Wrapper>
-    </Nav>
+    <>
+      <Nav role="navigation" className={isOpen ? "menu-open" : ""} ref={navRef}>
+        {navContent}
+      </Nav>
+      <IslandNav
+        role="navigation"
+        className={`${isOpen ? "menu-open" : ""} ${showIsland ? '' : 'hidden'}`}
+        ref={islandRef}
+        aria-hidden={!showIsland}
+      >
+        {islandContent}
+      </IslandNav>
+    </>
   );
 }
 
