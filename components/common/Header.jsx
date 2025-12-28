@@ -18,7 +18,11 @@ const Nav = styled.nav`
   z-index: 9997;
   position: sticky;
   pointer-events: none;
-  transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1), padding-top 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  padding-top: 0;
+  &.island {
+    padding-top: 12px;
+  }
   * {
     box-sizing: content-box;
   }
@@ -103,7 +107,7 @@ const Title = styled.h2`
   }
   img {
     margin-left: -3px;
-    padding-right: 10px;
+    padding-right: 12px;
     cursor: pointer;
     @media ${mediaQueries.sm} {
       margin-left: -2px;
@@ -398,17 +402,18 @@ function Header() {
   }, [menuRef]);
 
   return (
-    <Nav role="navigation" className={isOpen ? "menu-open" : ""} ref={menuRef}>
+    <Nav role="navigation" className={`${isOpen ? "menu-open" : ""} ${isIsland ? "island" : ""}`} ref={menuRef}>
       <Wrapper className={isIsland ? 'island' : ''}>
         <HeaderContainer>
           <Link href="/">
             <Title>
               <Image
-                width={96}
-                height={36}
-                src="/wordmark.png"
+                width={32}
+                height={32}
+                src="/product-icon.png"
                 alt={`${config.title} product icon`}
               />
+              Mythic
           </Title>
           </Link>
           <Menu>
