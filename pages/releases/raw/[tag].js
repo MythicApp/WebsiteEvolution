@@ -13,7 +13,6 @@ export async function getStaticProps({ params }) {
     props: {
       release: releases.find((release) => release.tag_name === tag) || null,
     },
-    revalidate: 60 * 30, // 30 minutes
   };
 }
 
@@ -27,6 +26,5 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
   };
 }

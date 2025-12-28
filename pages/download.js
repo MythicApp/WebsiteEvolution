@@ -16,6 +16,5 @@ export async function getStaticProps() {
       versionNumber: latest?.versionNumber ?? null,
       downloadUrl: latest?.enclosure ?? null,
     },
-    revalidate: 60 * 30, // 30 minutes
   };
 }

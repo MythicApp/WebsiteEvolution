@@ -24,6 +24,5 @@ export async function getStaticProps() {
       versionNumber: versionLabel,
       minimumSystemVersion: latest?.minimumSystemVersion ?? getMinimumSystemVersion(latest?.title ?? ''),
     },
-    revalidate: 60 * 60 * 24, // 24 hours
   };
 }
