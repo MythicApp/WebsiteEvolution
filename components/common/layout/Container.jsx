@@ -7,7 +7,7 @@ const smallGutter = 16;
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  max-width: ${({ $width }) => $width === 'lg' ? 1440-(gutter*2) : 1024}px;
+  max-width: ${({ $width }) => $width === 'lg' ? '100%' : '1024px'};
   width: calc(100% - max(${gutter}px, env(safe-area-inset-left)) - max(${gutter}px, env(safe-area-inset-right)));
   padding: 0 ${gutter}px;
   padding-left: calc(max(${gutter}px, env(safe-area-inset-left)));

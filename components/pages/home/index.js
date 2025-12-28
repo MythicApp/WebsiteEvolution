@@ -17,7 +17,7 @@ export default function HomePage(props) {
   return (
     <>
       <HeroSection {...props} />
-      <IntroFeaturesSection />
+      <FeaturesSection />
       {/* <SampleStorySection /> */}
       {/* <SampleStorySection /> */}
       {/* <WhyUsSection />

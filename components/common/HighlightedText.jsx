@@ -7,9 +7,7 @@ const HighlightedText = styled.span`
   -webkit-background-clip: text;
   background-clip: text;
   color: #652AFF;
-  [data-color-scheme='dark'] & {
-    text-shadow: 0 0 0.75em #652AFF;
-  }
+  text-shadow: 0 0 1.8em #652AFF;
 `;
 
 export default HighlightedText;
