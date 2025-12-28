@@ -443,9 +443,7 @@ function Header() {
               <Action>
                 <Button
                   size="sm"
-                  href={`${config.links.githubRepo}/releases/latest`}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={`/download`}
                 >
                   Download Alpha
                 </Button>
