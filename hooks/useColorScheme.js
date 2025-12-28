@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const getColorSchemeSetting = () =>
-  window.localStorage.getItem('colorScheme') ?? 'auto';
+  window.localStorage.getItem('colorScheme') ?? 'light';
 
 const getSystemColorScheme = () =>
   typeof window.matchMedia !== 'undefined' &&
