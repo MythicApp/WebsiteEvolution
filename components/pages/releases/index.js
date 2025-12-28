@@ -27,7 +27,9 @@ export default function ReleasesPage({ releases, appcastDownloadMap = {} }) {
           <HighlightedText>Releases</HighlightedText>
         </Typography>
         <HeroIntro variant="intro-elevated" gutter>
-          See what&apos;s shipping in each Mythic release. For full notes, visit the{' '}
+          See what&apos;s shipping in each Mythic release.
+          <br />
+          For full notes, visit the{' '}
           <a href="https://www.github.com/MythicApp/Mythic/releases">
             Mythic Release Notes
           </a>
