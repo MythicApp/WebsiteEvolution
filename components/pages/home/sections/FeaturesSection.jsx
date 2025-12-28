@@ -23,7 +23,7 @@ const FeaturesSection = () => {
             <Stack direction='vertical' gap={2}>
               <Typography variant="eyebrow">Plenty of games, <HighlightedText>one place.</HighlightedText></Typography>
               <Typography variant="body">
-                Mythic brings your entire game library together, regardless of whether they're macOS games, Windows® games, Epic games, manually downloaded games, or otherwise.
+                Mythic brings your entire game library together, regardless of whether they&apos;re macOS games, Windows® games, Epic games, manually downloaded games, or otherwise.
                 <br />
                 <br />
                 Launch, manage, and customise your play experience without juggling a million apps.
@@ -58,7 +58,7 @@ const FeaturesSection = () => {
           <Stack direction='horizontal' gap={2}>
             <Download />
             <Stack direction='vertical' gap={2}>
-              <Typography variant="eyebrow" style={{color: 'white'}}>What're you still waiting for?</Typography>
+              <Typography variant="eyebrow" style={{color: 'white'}}>What&apos;re you still waiting for?</Typography>
               <Typography variant="body" style={{color: 'white'}}>
                 <a href="" style={{color: 'var(--glyph-gray)'}}>Download Mythic</a> today, and join the revolution in gaming on macOS.
               </Typography>
@@ -126,7 +126,7 @@ const FeaturesSection = () => {
           <Stack gap={2}>
             <Typography variant="eyebrow">It just works!</Typography>
             <Typography variant="body">
-              Mythic's onboarding experience guides your through setting up the application, swiftly.
+              Mythic&apos;s onboarding experience guides your through setting up the application, swiftly.
             </Typography>
             <Image
               width={481}
@@ -141,7 +141,7 @@ const FeaturesSection = () => {
           <Stack gap={2}>
             <Typography variant="eyebrow">Open-source, <HighlightedText>open season.</HighlightedText></Typography>
             <Typography variant="body">
-              Check out Mythic's Discord community!
+              Check out Mythic&apos;s Discord community!
             </Typography>
             <iframe
               src={`https://discord.com/widget?id=1154998702650425397&theme=${colorScheme}`}
