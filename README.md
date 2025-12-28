@@ -1,3 +1,18 @@
+<h1 align="center">
+  <br>
+  <a href="https://getmythic.app">
+    <img src="https://github.com/user-attachments/assets/dd702812-0d06-47a5-bd25-3f2dcf40aeee" 
+      style="width: 20%; height: 20%;">
+  </a>
+
+  Website
+
+  ![GitHub License](https://img.shields.io/github/license/MythicApp/Mythic) 
+  [![Discord](https://img.shields.io/discord/1154998702650425397?color=5865F2)](https://discord.com/invite/58NZ7fFqPy)
+</h1>
+
+<sub>Derived from <a href="https://github.com/CodeEditApp/codeedit.app">codeedit.app</a>. Credit to its contributors.</sub>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
