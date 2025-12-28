@@ -112,7 +112,7 @@ function Footer() {
           <MiniFooterBottom>
             <LegalCopyright>
               Copyright &copy; {currentYear}{' '}
-              <a href={config.host}>vapidinfinity</a>. All rights reserved.
+              <a href="https://vapid.space">vapidinfinity</a>. All rights reserved.
             </LegalCopyright>
             <LegalLinks>
               {/* <LegalLink href="/legal/tos">
@@ -121,9 +121,6 @@ function Footer() {
               <LegalLink href="/legal/privacy">
                 Privacy Policy
               </LegalLink> */}
-              <LegalLink href={config.links.license}>
-                License
-              </LegalLink>
             </LegalLinks>
           </MiniFooterBottom>
         </FooterMini>
