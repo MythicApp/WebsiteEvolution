@@ -1,4 +1,5 @@
 import { Download } from 'react-feather';
+import Link from 'next/link';
 import Tile from '@/components/common/Tile';
 import Typography from '@/components/common/Typography';
 import { Grid, GridItem, Section, Stack } from '@/components/common/layout';
@@ -63,7 +64,7 @@ const FeaturesSection = () => {
             <Stack direction='vertical' gap={2}>
               <Typography variant="eyebrow" style={{color: 'white'}}>What&apos;re you still waiting for?</Typography>
               <Typography variant="body" style={{color: 'white'}}>
-                <a href="/download" style={{color: 'var(--glyph-gray)'}}>Download Mythic</a> today, and join the revolution in gaming on macOS.
+                <Link href="/download" style={{color: 'var(--glyph-gray);'}}>Download Mythic</Link> today, and join the revolution in gaming on macOS.
               </Typography>
             </Stack>
             {/*
