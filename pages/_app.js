@@ -11,7 +11,7 @@ function App({ Component, pageProps, router }) {
   const pageData = config.pages[pathname] ?? config.pages['/'];
   const isDefault = defaultPageData === pageData;
   const title = isDefault
-    ? `${config.title} | The best way to play Windows® games on Mac.`
+    ? `${config.title} | The elegant way to play Windows® games on Mac.`
     : `${pageData.title} | ${config.title}`;
   const { description } = pageData;
   const { host } = config;
