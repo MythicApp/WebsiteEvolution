@@ -28,7 +28,7 @@ function App({ Component, pageProps, router }) {
         <meta property="og:url" content={`${host}${asPath}`} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={`${host}/social-preview.jpg`} />
+        <meta property="og:image" content={`${host}/social-preview.avif`} />
       </Head>
       <Layout pathname={pathname}>
         <Component {...pageProps} />

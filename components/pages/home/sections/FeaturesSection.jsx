@@ -35,7 +35,7 @@ const FeaturesSection = () => {
               className="feature-image-hover"
               width={481}
               height={282}
-              src={`/mythic-library-grid-${colorScheme}.png`}
+              src={`/mythic-library-grid-${colorScheme}.avif`}
               alt="Mythic screenshot"
               style={{ height: 'auto', objectFit: 'contain' }}
             />
@@ -52,7 +52,7 @@ const FeaturesSection = () => {
               className="feature-image-hover"
               width={481}
               height={282}
-              src={`/mythic-epicgameimportview-${colorScheme}.png`}
+              src={`/mythic-epicgameimportview-${colorScheme}.avif`}
               alt="Mythic screenshot"
               style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
             />
@@ -91,7 +91,7 @@ const FeaturesSection = () => {
               className="feature-image-hover"
               width={481}
               height={282}
-              src={`/mythic-gamesettingsview-${colorScheme}.png`}
+              src={`/mythic-gamesettingsview-${colorScheme}.avif`}
               alt="Mythic screenshot"
               style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
             />
@@ -107,7 +107,7 @@ const FeaturesSection = () => {
               className="feature-image-hover"
               width={481}
               height={282}
-              src={`/mythic-operations-demo-${colorScheme}.png`}
+              src={`/mythic-operations-demo-${colorScheme}.avif`}
               alt="Mythic screenshot"
               style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
             />
@@ -123,7 +123,7 @@ const FeaturesSection = () => {
               className="feature-image-hover"
               width={481}
               height={282}
-              src={`/mythic-containerconfirgurationview-${colorScheme}.png`}
+              src={`/mythic-containerconfirgurationview-${colorScheme}.avif`}
               alt="Mythic screenshot"
               style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
             />
@@ -139,7 +139,7 @@ const FeaturesSection = () => {
               className="feature-image-hover"
               width={481}
               height={282}
-              src={`/mythic-onboarding-engineinstall-${colorScheme}.png`}
+              src={`/mythic-onboarding-engineinstall-${colorScheme}.avif`}
               alt="Mythic screenshot"
               style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
             />

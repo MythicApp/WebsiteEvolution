@@ -425,7 +425,7 @@ function Header() {
             <Image
               width={32}
               height={32}
-              src="/product-icon.png"
+              src="/product-icon.avif"
               alt={`${config.title} product icon`}
             />
             Mythic
@@ -477,7 +477,7 @@ function Header() {
             <Image
               width={32}
               height={32}
-              src="/product-icon.png"
+              src="/product-icon.avif"
               alt={`${config.title} product icon`}
             />
             Mythic

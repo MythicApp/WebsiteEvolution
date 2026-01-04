@@ -20,7 +20,7 @@ const ImageWrap = styled.div`
   aspect-ratio: 1391/702;
   position: relative;
   margin: 0 -40px -40px -40px;
-  background: url(/window-dark-cropped.png) top left no-repeat;
+  background: url(/window-dark-cropped.avif) top left no-repeat;
   background-size: 1391px 702px;
 `;
 

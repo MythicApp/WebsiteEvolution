@@ -14,11 +14,11 @@ const HardwareLockupWrap = styled.div`
     mask-size: contain;
     /* mask-position: center; */
     mask-repeat: no-repeat;
-    mask-image: url(/m1_laptop_hw_shape_mask_large.png);
+    mask-image: url(/m1_laptop_hw_shape_mask_large.avif);
   }
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
     @supports ((-webkit-mask-image:url("")) or (mask-image:url(""))) {
-        mask-image: url(/m1_laptop_hw_shape_mask_large_2x.png);
+        mask-image: url(/m1_laptop_hw_shape_mask_large_2x.avif);
     }
   }
 `
@@ -37,11 +37,11 @@ const HardwareLockupMedia = styled.div`
     mask-size: contain;
     /* mask-position: center; */
     mask-repeat: no-repeat;
-    mask-image: url(/m1_laptop_hw_mask_large.png);
+    mask-image: url(/m1_laptop_hw_mask_large.avif);
   }
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
     @supports ((-webkit-mask-image:url("")) or (mask-image:url(""))) {
-        mask-image: url(/m1_laptop_hw_mask_large_2x.png);
+        mask-image: url(/m1_laptop_hw_mask_large_2x.avif);
     }
   }
 `
@@ -52,10 +52,10 @@ const HardwareLockup = (props) => {
   return (
     <HardwareLockupWrap {...props}>
       <HardwareImage>
-        <Image src={`/m1_laptop_hw_${colorScheme}_large_2x.jpg`} alt="hardware image" width="1204" height="736" />
+        <Image src={`/m1_laptop_hw_${colorScheme}_large_2x.avif`} alt="hardware image" width="1204" height="736" />
       </HardwareImage>
       <HardwareLockupMedia>
-        <Image src={`/screen_macos_desktop_${colorScheme}_large_2x.jpg`} alt="image" width="984" height="636" />
+        <Image src={`/screen_macos_desktop_${colorScheme}_large_2x.avif`} alt="image" width="984" height="636" />
       </HardwareLockupMedia>
     </HardwareLockupWrap>
   )

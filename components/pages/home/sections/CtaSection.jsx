@@ -24,7 +24,7 @@ export default function CtaSection() {
         <Image
           width={104}
           height={104}
-          src="/product-icon.png"
+          src="/product-icon.avif"
           alt="Mythic product icon"
         />
         <Stack align="center" gap={1}>

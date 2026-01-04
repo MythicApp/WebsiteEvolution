@@ -31,7 +31,7 @@ const HeroSection = ({ versionNumber, minimumSystemVersion }) => {
                     <Image
                       width={128}
                       height={128}
-                      src="/product-icon.png"
+                      src="/product-icon.avif"
                       alt="Mythic product icon"
                     />
                   </ProductIconWrap>
