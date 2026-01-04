@@ -15,9 +15,13 @@ export async function getStaticProps() {
 
   const build = latest?.versionTagRaw ?? latest?.versionNumber ?? null;
   const shortVersion = latest?.shortVersion ?? latest?.title ?? null;
-  const versionLabel = shortVersion && build
-    ? `${shortVersion} (${build})`
-    : shortVersion ?? (build ? String(build) : null);
+  let displayShortVersion = shortVersion;
+  if (displayShortVersion && !/^v/i.test(displayShortVersion)) {
+    displayShortVersion = `v${displayShortVersion}`;
+  }
+  const versionLabel = displayShortVersion && build
+    ? `${displayShortVersion} (${build})`
+    : displayShortVersion ?? (build ? String(build) : null);
 
   return {
     props: {
