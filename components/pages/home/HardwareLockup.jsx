@@ -52,10 +52,10 @@ const HardwareLockup = (props) => {
   return (
     <HardwareLockupWrap {...props}>
       <HardwareImage>
-        <Image src={`/m1_laptop_hw_${colorScheme}_large_2x.avif`} alt="hardware image" width="1204" height="736" />
+        <Image key={colorScheme} src={`/m1_laptop_hw_${colorScheme}_large_2x.avif`} alt="hardware image" width="1204" height="736" />
       </HardwareImage>
       <HardwareLockupMedia>
-        <Image src={`/screen_macos_desktop_${colorScheme}_large_2x.avif`} alt="image" width="984" height="636" />
+        <Image key={colorScheme} src={`/screen_macos_desktop_${colorScheme}_large_2x.avif`} alt="image" width="984" height="636" />
       </HardwareLockupMedia>
     </HardwareLockupWrap>
   )

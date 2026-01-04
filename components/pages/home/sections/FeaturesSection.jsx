@@ -32,6 +32,7 @@ const FeaturesSection = () => {
               </Typography>
             </Stack>
             <Image
+              key={colorScheme}
               className="feature-image-hover"
               width={481}
               height={282}
@@ -49,6 +50,7 @@ const FeaturesSection = () => {
               Mythic will automatically organise, and prepare them for launching — no assembly required.
             </Typography>
             <Image
+              key={colorScheme}
               className="feature-image-hover"
               width={481}
               height={282}
@@ -88,6 +90,7 @@ const FeaturesSection = () => {
               The intuitive game settings view lets you tweak launch arguments, verify file integrity, and more with just a few clicks.
             </Typography>
             <Image
+              key={colorScheme}
               className="feature-image-hover"
               width={481}
               height={282}
@@ -104,6 +107,7 @@ const FeaturesSection = () => {
               Download, update, and install games from multiple storefronts with ease.
             </Typography>
             <Image
+              key={colorScheme}
               className="feature-image-hover"
               width={481}
               height={282}
@@ -120,6 +124,7 @@ const FeaturesSection = () => {
               Create multiple containers of Windows® directly within Mythic, and choose to keep some games isolated from others.
             </Typography>
             <Image
+              key={colorScheme}
               className="feature-image-hover"
               width={481}
               height={282}
@@ -136,6 +141,7 @@ const FeaturesSection = () => {
               Mythic&apos;s onboarding experience guides your through setting up the application, swiftly.
             </Typography>
             <Image
+              key={colorScheme}
               className="feature-image-hover"
               width={481}
               height={282}

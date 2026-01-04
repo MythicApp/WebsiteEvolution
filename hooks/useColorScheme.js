@@ -12,7 +12,13 @@ const getSystemColorScheme = () => {
 
 const useColorScheme = () => {
   const [colorSchemeSetting, setColorSchemeSetting] = useState('auto');
-  const [colorScheme, setColorScheme] = useState(getSystemColorScheme());
+  const [colorScheme, setColorScheme] = useState('light');
+
+  useEffect(() => {
+    const pref = window.localStorage.getItem('colorScheme') ?? 'auto';
+    setColorSchemeSetting(pref);
+    setColorScheme(pref === 'auto' ? getSystemColorScheme() : pref);
+  }, []);
 
   const setColorSchemePref = (scheme) => {
     if (['light', 'dark'].includes(scheme)) {
@@ -37,12 +43,6 @@ const useColorScheme = () => {
     return () => {
       window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', handleChange);
     };
-  }, []);
-  
-  useEffect(() => {
-    const pref = getColorSchemeSetting();
-    setColorSchemeSetting(pref);
-    setColorScheme(pref === 'auto' ? getSystemColorScheme() : pref);
   }, []);
 
   useEffect(() => {

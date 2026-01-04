@@ -140,6 +140,7 @@ const HeroImage = ({ percentage }) => {
       <ColorFlair3 />
       <ImageWrap style={{ transform: `translateY(${imageTranslateY}%) scale(${imageScale})` }}>
         <Image
+          key={colorScheme}
           width={721.5}
           height={423}
           src={`/mythic-window-${colorScheme}.avif`}
