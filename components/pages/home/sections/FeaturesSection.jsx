@@ -47,6 +47,8 @@ const FeaturesSection = () => {
             <Typography variant="eyebrow">Import <HighlightedText>everything</HighlightedText>.</Typography>
             <Typography variant="body">
               Import games from existing launchers and local installations in mere minutes.
+              <br />
+              <br />
               Mythic will automatically organise, and prepare them for launching — no assembly required.
             </Typography>
             <Image
