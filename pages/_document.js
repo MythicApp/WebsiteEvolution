@@ -31,6 +31,7 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="apple-mobile-web-app-capable" content="yes"></meta>
           <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
         </Head>
         <body>
           <Main />
